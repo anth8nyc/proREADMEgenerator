@@ -28,7 +28,7 @@ function renderLicenseBadge(license) {
 function renderMediaAssist(mediaquest) {
   switch (mediaquest) {
     case 'Yes -- please include after project title':
-      response1 = `![Change to alt text](changeToImageLink)`
+      response1 = `\n![Change to alt text](changeToImageLink)`
       response2 = ``
       break;
     
@@ -38,7 +38,7 @@ function renderMediaAssist(mediaquest) {
       break;
       
     case 'Yes -- please include both above.':
-      response1 = `![Change to alt text](changeToImageLink)`
+      response1 = `\n![Change to alt text](changeToImageLink)`
       response2 = `### Demo\n![Change to alt text](changeToImageLink)`
       break;
     case 'No':
