@@ -24,7 +24,7 @@ function renderLicenseBadge(license) {
   }
   return response
 }
-// ' 'Yes -- please include both above.', 'No', 
+// A function to provide the image link templates for after the title and for the Demo area  
 function renderMediaAssist(mediaquest) {
   switch (mediaquest) {
     case 'Yes -- please include after project title':
@@ -92,11 +92,18 @@ function generateMarkdown(data) {
   let licSection = renderLicenseSection(data.lic);
   let mediaAnswers = renderMediaAssist(data.mediaquest)
   
-  console.log(mediaAnswers)
   titleImgPrv = mediaAnswers[0]
   usgImgPrv = mediaAnswers[1]
-  console.log(titleImgPrv)
-  console.log(usgImgPrv)
+  // Includes or removes License from table of contents
+  if (licSection === ``){
+
+    tblContentLic = ``
+
+  } else {
+
+    tblContentLic = `\n- [License](#license)`    
+  }
+  //Indented oddly to preserve string literal indenting in README production 
   return `
 # ${data.title} READme
 ${licBadge}
@@ -105,9 +112,8 @@ ${titleImgPrv}
 ${data.description}
 ## Table of Contents
 - [Installation](#installation)
-- [Usage](#usage)
-- [License](#license)
-- [How to Contribute](##howtocontribute)
+- [Usage](#usage)${tblContentLic}
+- [Contribute](##contribute)
 - [Test](##tests)
 - [Contact](##questions?)
 
@@ -121,7 +127,7 @@ ${usgImgPrv}
 
 ---  
 ${licSection}
-## How to Contribute
+## Contribute
 ${data.contribguide}
 ## Tests
 To run tests, run the following command:

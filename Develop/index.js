@@ -57,28 +57,25 @@ const questions = [
         name: 'mediaquest',
         choices: ['Yes -- please include after project title', 'Yes -- please include in usage information area', 'Yes -- please include both above.', 'No', ]
     },
-    
 ];
 
 // A function to write README file
 function writeToFile(filename, data) {
 
     fs.writeFile(filename, genmd(data), (err) =>
-        err ? console.error(err) : console.log('Success! Note: The file created uses your project title to name the new file in case of generating multiple READmes. Do not forget to remove this prepend after moving your READme to its respective repo folder, especially if using GitHub, as GitHub searches for a file with the simple name of "README.md"')
+        err ? console.error(err) : console.log('Success! \nNote: The file created uses your project title to name the new file in case of generating multiple READmes. \nDo not forget to remove this prepend after moving your READme to its respective repo folder. \nThis is especially important if using GitHub, as GitHub searches for a file named "README.md" to display.')
     );
 }
 
 // A function to initialize app
 function init() { 
     inquirer.prompt([...questions])
-
     .then((data) => {
         
         const filename = `${data.title.toLowerCase().split(' ').join('')}README.md`;
         writeToFile(filename, data);
 
     });
-
 }
 
 // A function call to initialize function
