@@ -1,11 +1,10 @@
-// TODO: Include packages needed for this application
+// Packages needed for this application, inquirer is installed by running 'npm i'
 const inquirer = require('inquirer');
 const fs = require('fs');
 const genmd = require('./utils/generateMarkdown');
 
-// TODO: Create an array of questions for user input
+// Array of questions for user input
 const questions = [
-
     {
         type: 'input',
         message: 'What is your GitHub username?',
@@ -23,7 +22,7 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'Please describe any necessary installation instructions:',
+        message: 'Please list any necessary installation commands:',
         name: 'installinstruct',
     },
     {
@@ -38,37 +37,38 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'Please describe project test instructions:',
+        message: 'Please list any commands to test the project:',
         name: 'testinstruct',
     },
     {
         type: 'list',
         message: 'Select your licensing:',
-        name: 'llc',
-        choices: ['choice a', 'choice b', 'choice c'],
+        name: 'lic',
+        choices: ['MIT', 'APACHE_2.0', 'GPL_3.0', 'BSD_3', 'None'],
     },
     {
         type: 'input',
         message: 'Please provide a good contact email for questions about your project:',
         name: 'email',
     },
+    {
+        type: 'list',
+        message: 'Will you be providing an image file for previewing or demoing your project? \n(An area and empty image link template will generate for assistance if so.)',
+        name: 'mediaquest',
+        choices: ['Yes -- please include after project title', 'Yes -- please include in usage information area', 'Yes -- please include both above.', 'No', ]
+    },
     
 ];
 
-
-
-// TODO: Create a function to write README file
+// A function to write README file
 function writeToFile(filename, data) {
 
     fs.writeFile(filename, genmd(data), (err) =>
-        err ? console.error(err) : console.log('Success!')
+        err ? console.error(err) : console.log('Success! Note: The file created uses your project title to name the new file in case of generating multiple READmes. Do not forget to remove this prepend after moving your READme to its respective repo folder, especially if using GitHub, as GitHub searches for a file with the simple name of "README.md"')
     );
-
 }
 
-
-
-// TODO: Create a function to initialize app
+// A function to initialize app
 function init() { 
     inquirer.prompt([...questions])
 
@@ -81,5 +81,5 @@ function init() {
 
 }
 
-// Function call to initialize app
+// A function call to initialize function
 init();

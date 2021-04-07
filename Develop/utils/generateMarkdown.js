@@ -1,49 +1,137 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+// A function that returns a license badge based on which license is passed in
+function renderLicenseBadge(license) {
+  switch (license) {
+    case 'MIT':
+      response = `![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)`
+      break;
+    
+    case 'APACHE_2.0':
+      response = `![GitHub license](https://img.shields.io/badge/license-APACHE_2.0-blue.svg)`
+      break;
+      
+    case 'GPL_3.0':
+      response = `![GitHub license](https://img.shields.io/badge/license-GPL_3.0-blue.svg)`
+      break;
+    case 'BSD_3':
+      response = `![GitHub license](https://img.shields.io/badge/license-BSD_3-blue.svg)`
+      break;
+    case 'None':
+      response = ``
+      break;
+    default:
+      response = ``
+      break;
+  }
+  return response
+}
+// ' 'Yes -- please include both above.', 'No', 
+function renderMediaAssist(mediaquest) {
+  switch (mediaquest) {
+    case 'Yes -- please include after project title':
+      response1 = `![Change to alt text](changeToImageLink)`
+      response2 = ``
+      break;
+    
+    case 'Yes -- please include in usage information area':
+      response1 = ``
+      response2 = `### Demo\n![Change to alt text](changeToImageLink)`
+      break;
+      
+    case 'Yes -- please include both above.':
+      response1 = `![Change to alt text](changeToImageLink)`
+      response2 = `### Demo\n![Change to alt text](changeToImageLink)`
+      break;
+    case 'No':
+      response1 = ``
+      response2 = ``
+      break;
+    default:
+      response1 = ``
+      response2 = ``
+      break;
+  }
+  return [response1, response2]
+}
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
+// A function that returns the license section of README.
+function renderLicenseSection(license) {
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
+  switch (license) {
+    case 'MIT':
+      response = `## License
+      This project is licensed under the MIT license.\n---`
+      break;
+    
+    case 'APACHE_2.0':
+      response = `## License
+      This project is licensed under the APACHE_2.0 license.\n---`
+      break;
+      
+    case 'GPL_3.0':
+      response = `## License
+      This project is licensed under the GPL_3.0 license.\n---`
+      break;
+    case 'BSD_3':
+      response = `## License
+      This project is licensed under the BSD_3 license.\n---`
+      break;
+    case 'None':
+      response = ``
+      break;
+    default:
+      response = ``
+      break;
+  }
+  return response
+}
 
-// TODO: Create a function to generate markdown for README
+//A function to generate markdown for README
 function generateMarkdown(data) {
+
+  let licBadge = renderLicenseBadge(data.lic);
+  let licSection = renderLicenseSection(data.lic);
+  let mediaAnswers = renderMediaAssist(data.mediaquest)
+  
+  console.log(mediaAnswers)
+  titleImgPrv = mediaAnswers[0]
+  usgImgPrv = mediaAnswers[1]
+  console.log(titleImgPrv)
+  console.log(usgImgPrv)
   return `
-  # ${data.title}
-  ## Description
-  ${data.description}
-  ## Table of Contents
-  If your README is long, add a table of contents to make it easy for users to find what they need.
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [License](#license)
-  - [How to Contribute](##howtocontribute)
-  - [Test](##tests)
-  - [Contact](##questions?)
+# ${data.title} READme
+${licBadge}
+${titleImgPrv}
+## Description
+${data.description}
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [How to Contribute](##howtocontribute)
+- [Test](##tests)
+- [Contact](##questions?)
 
-  ## Installation
-  ${data.installinstruct}
-  ## Usage
-  ${data.useinfo}  
-  ## License
-  ${data.llc}
-  The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
-  ---
+## Installation
+To install necessary dependencies, run the following command with an integrated terminal:
 
-  ## How to Contribute
-  ${data.contribguide}
-  If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-  ## Tests
-  ${data.testinstruct}
-  Go the extra mile and write tests for your application. Then provide examples on how to run them here.
-  ## Questions?
-  Please direct any questions to: ${data.email}
+    ${data.installinstruct}
+## Usage
+${data.useinfo}
+${usgImgPrv}
 
-  `;
+---  
+${licSection}
+## How to Contribute
+${data.contribguide}
+## Tests
+To run tests, run the following command:
+
+    ${data.testinstruct}
+## Questions?
+If you come across any issues with the repo, please open an issue, or contact me directly at: ${data.email}. More of my work is avaiable on GitHub at [${data.username}](https://github.com/${data.username}/).
+
+`;
+
 }
 
 module.exports = generateMarkdown;
