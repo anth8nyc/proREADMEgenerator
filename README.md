@@ -23,7 +23,11 @@ If no licenses are selected, the license section is excluded, as is the table of
  
  Note: the file created will use the project title to prepend the file name in case you are generating multiple READmes, and for clarity in moving the READme to its correct location. Do not forget to remove this preprend after moving your READme-- especially if you are using GitHub, as GitHub searches for a file with the simple name of "README.md" to display on repo websites.
 ### Demo
-    ![Change to alt text](changeToImageLink)
+
+![Generator demo gif](./assets/images/proREADMEgenDemo.gif)
+
+[Click for a video demonstrating the functionality in more detail](https://drive.google.com/file/d/1ZvbxLg1bM7OlixsJE4jXFacsPYuW-GtG/view?usp=sharing)
+
 ---
 
 ## Contribute
