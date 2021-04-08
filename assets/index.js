@@ -63,7 +63,7 @@ const questions = [
 function writeToFile(filename, data) {
 
     fs.writeFile(filename, genmd(data), (err) =>
-        err ? console.error(err) : console.log('Success! \nNote: The file created uses your project title to name the new file in case of generating multiple READmes. \nDo not forget to remove this prepend after moving your READme to its respective repo folder. \nThis is especially important if using GitHub, as GitHub searches for a file named "README.md" to display.')
+        err ? console.error(err) : console.log('Success!\n------\nNote: The file created uses your project title to name the new file in case of generating multiple READmes. \nDo not forget to remove this prepend after moving your READme to its respective repo folder. \nThis is especially important if using GitHub, as GitHub searches for a file named "README.md" to display.\n------')
     );
 }
 

@@ -118,7 +118,7 @@ ${data.description}
 - [Contact](##questions?)
 
 ## Installation
-To install necessary dependencies, run the following command with an integrated terminal:
+To install necessary dependencies, run the following command:
 
     ${data.installinstruct}
 ## Usage
